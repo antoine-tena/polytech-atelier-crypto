@@ -1,0 +1,46 @@
+Sorties reelles capturees sur la machine Linux (WSL2) le 2026-11-06.
+Reproductibles avec ./run.sh
+
+=================== Q1 - netstat -i ===================
+Kernel Interface table
+Iface             MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+docker0          1500        0      0      0 0             0      0      2      0 BMU
+eth0             1500  1075739      0      0 0        553642      0      0      0 BMRU
+lo              65536 19950841      0      0 0      19950841      0      0      0 LRU
+
+=================== Routeur ? (Q2) ===================
+Ip: Forwarding: 1
+/proc/sys/net/ipv4/ip_forward : 1
+
+=================== Q3 - ICMP OutType8 (pings emis) ===================
+--- avant ---  (OutType8 absent => 0 echo request emis)
+--- apres 5 echo request (3 + 1 + 1) ---
+        OutType8: 5
+
+=================== Q9 - Serveur TCP port 5000 ===================
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN
+
+=================== Q10/Q11 - Client TCP connecte ===================
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:5000          127.0.0.1:39212         ESTABLISHED
+tcp        0      0 127.0.0.1:39212         127.0.0.1:5000          ESTABLISHED
+
+=================== Q11b - Fin du client ===================
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 127.0.0.1:39212         127.0.0.1:5000          TIME_WAIT
+
+=================== Q13 - TCP multiclient (-k) + plusieurs clients ===================
+--- TCP ---
+tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:5000          127.0.0.1:33434         ESTABLISHED
+tcp        0      0 127.0.0.1:33434         127.0.0.1:5000          ESTABLISHED
+tcp        0      0 127.0.0.1:5000          127.0.0.1:33436         ESTABLISHED
+tcp        0      0 127.0.0.1:33436         127.0.0.1:5000          ESTABLISHED
+--- UDP ---
+udp        0      0 0.0.0.0:5000            0.0.0.0:*                           (colonne State vide)
+udp        0      0 127.0.0.1:47298         127.0.0.1:5000          ESTABLISHED  (socket "connecte" cote serveur)
+
+=================== Q14 - Fin du client UDP ===================
+udp        0      0 0.0.0.0:5000            0.0.0.0:*                           (seul le serveur reste, aucun TIME_WAIT)
