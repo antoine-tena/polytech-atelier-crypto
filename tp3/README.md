@@ -2,20 +2,16 @@
 
 Compte-rendu du TP3 « Sécurité et Cryptographie » (IDU4 — S7).
 
-## Contenu
-- **`partie1_netstat/`** — netstat + netcat (états des sockets TCP/UDP).
-  Questions 1 à 14 **exécutées réellement** sur Linux :
-  - `README.md` : réponses détaillées Q1–Q14 ;
-  - `run.sh` : script qui reproduit toutes les mesures ;
-  - `sorties.txt` : sorties réelles capturées.
-- **`partie2_kali/`** — Kali Linux vs Metasploitable2 dans VirtualBox :
-  config réseau, scan nmap (TCP/UDP/`-sV`), énumération d'utilisateurs
-  (`smb-enum-users`, `rpcclient` session nulle), exploitation **vsftpd 2.3.4**
-  (auto via Metasploit + manuelle via le smiley `:)`), **PHP CGI Argument
-  Injection** + reverse shell meterpreter, defacing.
-  → à **exécuter sur les deux VM**, les commandes et sorties attendues servent de
-  guide/compte-rendu.
-- **`ORAL.md`** — points à présenter à l'oral (ce que j'ai compris du TP3).
+## Fichiers
+- **`Compte-rendu TP3 - NMAP et Kali.docx`** — le **livrable** à déposer (Moodle).
+- **`compte-rendu.md`** — la **source éditable** du compte-rendu (parties 1 et 2 +
+  sorties réelles intégrées). Le docx en est généré via pandoc :
+  ```bash
+  pandoc compte-rendu.md -o "Compte-rendu TP3 - NMAP et Kali.docx" --standalone
+  ```
+- **`partie1_netstat/run.sh`** — script qui reproduit toutes les mesures netstat/netcat.
+- **`partie1_netstat/sorties.txt`** — sorties réelles capturées (aussi en annexe du docx).
+- **`ORAL.md`** — préparation d'oral (« ce que j'ai compris »), **hors** compte-rendu.
 
 ## Reproduire la partie 1
 ```bash
@@ -24,6 +20,6 @@ cd partie1_netstat && bash run.sh
 ```
 
 ## État d'exécution
-- Partie 1 (netstat/netcat) : **faite et vérifiée** sur cette machine Linux.
+- Partie 1 (netstat/netcat) : **faite et vérifiée** sur une machine Linux.
 - Partie 2 (VM Kali/Metasploitable) : guide complet prêt ; **à exécuter en TP**
-  dans VirtualBox (impossible hors des VM) puis capturer les écrans pour le dépôt.
+  dans VirtualBox puis à illustrer par des captures d'écran pour le dépôt.
