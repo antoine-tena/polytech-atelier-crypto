@@ -2,6 +2,11 @@
 
 Compte-rendu du TP3 « Sécurité et Cryptographie » (IDU4 — S7).
 
+> **Livrable à déposer :** `Compte-rendu TP3 - NMAP et Kali.docx` (généré depuis
+> `README.md` + `partie1_netstat/README.md` + `partie2_kali/README.md` via pandoc,
+> sorties réelles intégrées). Les `.md` restent la source éditable ; `ORAL.md` est
+> la préparation d'oral (hors compte-rendu).
+
 ## Contenu
 - **`partie1_netstat/`** — netstat + netcat (états des sockets TCP/UDP).
   Questions 1 à 14 **exécutées réellement** sur Linux :
